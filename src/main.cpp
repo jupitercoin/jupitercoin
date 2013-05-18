@@ -2037,14 +2037,14 @@ bool LoadBlockIndex(bool fAllowNew)
         if (fTestNet)
         {
             block.nTime    = 1368902499;
-            block.nNonce   = 0;
+            block.nNonce   = 540482;
         }
 
         //// debug print
         printf("%s\n", block.GetHash().ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x928d4f37c9abf9a7a3ff1d0cc9bcb3c9743bf060898f9572f2ff9f6bc39cb6ae"));
+        assert(block.hashMerkleRoot == uint256("0x81f7f1d0af558eafed17b855e5edc02fde1fbb60976e2e295b25a752e291d758"));
 
         // If genesis block hash does not match, then generate new genesis hash.
         if (true && block.GetHash() != hashGenesisBlock)
