@@ -1,4 +1,4 @@
-Litecoin-Qt: Qt4 GUI for Litecoin
+Jupitercoin-Qt: Qt4 GUI for Jupitercoin
 ================================
 
 Build instructions
@@ -23,9 +23,9 @@ then execute the following:
     qmake
     make
 
-Alternatively, install `Qt Creator`_ and open the `litecoin-qt.pro` file.
+Alternatively, install `Qt Creator`_ and open the `jupitercoin-qt.pro` file.
 
-An executable named `litecoin-qt` will be built.
+An executable named `jupitercoin-qt` will be built.
 
 .. _`Qt Creator`: http://qt.nokia.com/downloads/
 
@@ -40,7 +40,7 @@ Windows build instructions:
 
 - Copy the contents of the folder "deps" to "X:\\QtSDK\\mingw", replace X:\\ with the location where you installed the Qt SDK. Make sure that the contents of "deps\\include" end up in the current "include" directory.
 
-- Open the bitcoin-qt.pro file in Qt Creator and build as normal (ctrl-B)
+- Open the jupitercoin-qt.pro file in Qt Creator and build as normal (ctrl-B)
 
 .. _`Qt Windows SDK`: http://qt.nokia.com/downloads/sdk-windows-cpp
 .. _`dependencies archive`: https://download.visucore.com/bitcoin/qtgui_deps_1.zip
