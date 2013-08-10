@@ -838,14 +838,14 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 1 * 24 * 60 * 60; // JupiterCoin: 1 day
+static const int64 nTargetTimespan = 510; // JupiterCoin: 1 block
 static const int64 nTargetSpacing = 510; // JupiterCoin: 8.5 Minutes
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 
 // Thanks: Balthazar for suggesting the following fix
 // https://bitcointalk.org/index.php?topic=182430.msg1904506#msg1904506
-static const int64 nReTargetHistoryFact = 4; // look at 4 times the retarget
-                                             // interval into the block history
+static const int64 nReTargetHistoryFact = 2; // look at 2 times the retarget
+                                             // interval into the block history (so diff retargets based on last 2 blocks)
 
 //
 // minimum amount of work that could possibly be required nTime after
