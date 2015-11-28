@@ -328,12 +328,12 @@ RES_IMAGES =
 RES_MOVIES = $(wildcard qt/res/movies/spinner-*.png)
 
 RES_FONTS = \
-  qt/res/fonts/ComicNeue-Bold-Oblique.ttf \
-  qt/res/fonts/ComicNeue-Bold.ttf \
-  qt/res/fonts/ComicNeue-Light-Oblique.ttf \
-  qt/res/fonts/ComicNeue-Light.ttf \
-  qt/res/fonts/ComicNeue-Regular-Oblique.ttf \
-  qt/res/fonts/ComicNeue-Regular.ttf
+  qt/res/fonts/OpenSans-BoldItalic.ttf \
+  qt/res/fonts/OpenSans-Bold.ttf \
+  qt/res/fonts/OpenSans-LightItalic.ttf \
+  qt/res/fonts/OpenSans-Light.ttf \
+  qt/res/fonts/OpenSans-Italic.ttf \
+  qt/res/fonts/OpenSans-Regular.ttf
 
 BITCOIN_RC = qt/res/bitcoin-qt-res.rc
 

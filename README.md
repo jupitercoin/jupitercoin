@@ -1,4 +1,4 @@
-# Jupitercoin Core [JPC, Ð]
+# Jupitercoin Core [JPC]
 ==========================
 
 ![Jupitercoin](http://i.imgur.com/JdBkcou.png)
@@ -17,16 +17,13 @@ Jupitercoin uses a simplified variant of the scrypt key derivation function as i
 
 The current block reward schedule:
 
-1–99,999: 10 Jupitercoin 
-
-100,000–199,999: 5 Jupitercoin
-
-200,000–299,999: 2.5 Jupitercoin
-
-300,000–399,999: 1.25 Jupitercoin
-
-400,000+: 1 Jupitercoin
+* 1–99,999: 10 Jupitercoin 
+* 100,000–199,999: 5 Jupitercoin
+* 200,000–299,999: 2.5 Jupitercoin
+* 300,000–399,999: 1.25 Jupitercoin
+* 400,000+: 1 Jupitercoin
 
 ### Ports
-RPC 8569
-P2P 8568
+
+* RPC 8569
+* P2P 8568
