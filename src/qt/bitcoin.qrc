@@ -89,11 +89,11 @@
         <file alias="spinner-035">res/movies/spinner-035.png</file>
     </qresource>
     <qresource prefix="/fonts">
-        <file alias="ComicNeue-Bold">res/fonts/ComicNeue-Bold.ttf</file>
-        <file alias="ComicNeue-Bold-Oblique">res/fonts/ComicNeue-Bold-Oblique.ttf</file>
-        <file alias="ComicNeue-Light">res/fonts/ComicNeue-Light.ttf</file>
-        <file alias="ComicNeue-Light-Oblique">res/fonts/ComicNeue-Light-Oblique.ttf</file>
-        <file alias="ComicNeue-Regular">res/fonts/ComicNeue-Regular.ttf</file>
-        <file alias="ComicNeue-Regular-Oblique">res/fonts/ComicNeue-Regular-Oblique.ttf</file>
+        <file alias="OpenSans-Bold">res/fonts/OpenSans-Bold.ttf</file>
+        <file alias="OpenSans-BoldItalic">res/fonts/OpenSans-BoldItalic.ttf</file>
+        <file alias="OpenSans-Light">res/fonts/OpenSans-Light.ttf</file>
+        <file alias="OpenSans-LightItalic">res/fonts/OpenSans-LightItalic.ttf</file>
+        <file alias="OpenSans-Regular">res/fonts/OpenSans-Regular.ttf</file>
+        <file alias="OpenSans-RegularItalic">res/fonts/OpenSans-Italic.ttf</file>
     </qresource>
 </RCC>

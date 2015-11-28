@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>596</width>
-    <height>342</height>
+    <width>632</width>
+    <height>545</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -422,7 +422,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../bitcoin.qrc">:/icons/wallet_bgcoin</pixmap>
+          <pixmap resource="../bitcoin.qrc">:/icons/bitcoin</pixmap>
          </property>
          <property name="scaledContents">
           <bool>false</bool>
@@ -552,6 +552,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../bitcoin.qrc"/>
+ </resources>
  <connections/>
 </ui>
