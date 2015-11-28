@@ -1,0 +1,88 @@
+#!/sbin/runscript
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/jupitercoin/.jupitercoin" ]; then
+	JUPITERCOIND_DEFAULT_DATADIR="/var/lib/jupitercoin/.jupitercoin"
+else
+	JUPITERCOIND_DEFAULT_DATADIR="/var/lib/jupitercoind"
+fi
+
+JUPITERCOIND_CONFIGFILE=${JUPITERCOIND_CONFIGFILE:-/etc/jupitercoin/jupitercoin.conf}
+JUPITERCOIND_PIDDIR=${JUPITERCOIND_PIDDIR:-/var/run/jupitercoind}
+JUPITERCOIND_PIDFILE=${JUPITERCOIND_PIDFILE:-${JUPITERCOIND_PIDDIR}/jupitercoind.pid}
+JUPITERCOIND_DATADIR=${JUPITERCOIND_DATADIR:-${JUPITERCOIND_DEFAULT_DATADIR}}
+JUPITERCOIND_USER=${JUPITERCOIND_USER:-${JUPITERCOIN_USER:-jupitercoin}}
+JUPITERCOIND_GROUP=${JUPITERCOIND_GROUP:-jupitercoin}
+JUPITERCOIND_BIN=${JUPITERCOIND_BIN:-/usr/bin/jupitercoind}
+JUPITERCOIND_NICE=${JUPITERCOIND_NICE:-${NICELEVEL:-0}}
+JUPITERCOIND_OPTS="${JUPITERCOIND_OPTS:-${JUPITERCOIN_OPTS}}"
+
+name="Jupitercoin Core Daemon"
+description="Jupitercoin cryptocurrency P2P network daemon"
+
+command="/usr/bin/jupitercoind"
+command_args="-pid=\"${JUPITERCOIND_PIDFILE}\" \
+		-conf=\"${JUPITERCOIND_CONFIGFILE}\" \
+		-datadir=\"${JUPITERCOIND_DATADIR}\" \
+		-daemon \
+		${JUPITERCOIND_OPTS}"
+
+required_files="${JUPITERCOIND_CONFIGFILE}"
+start_stop_daemon_args="-u ${JUPITERCOIND_USER} \
+			-N ${JUPITERCOIND_NICE} -w 2000"
+pidfile="${JUPITERCOIND_PIDFILE}"
+retry=60
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${JUPITERCOIND_USER}:${JUPITERCOIND_GROUP}" \
+	"${JUPITERCOIND_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${JUPITERCOIND_USER}:${JUPITERCOIND_GROUP}" \
+	"${JUPITERCOIND_PIDDIR}"
+
+	checkpath -f \
+	-o ${JUPITERCOIND_USER}:${JUPITERCOIND_GROUP} \
+	-m 0660 \
+	${JUPITERCOIND_CONFIGFILE}
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if ! grep -qs '^rpcpassword=' "${JUPITERCOIND_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run jupitercoind."
+		eerror "The setting must appear in ${JUPITERCOIND_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following"
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is also recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Jupitercoin Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}

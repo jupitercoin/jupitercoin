@@ -1,0 +1,27 @@
+# /etc/conf.d/jupitercoind: config file for /etc/init.d/jupitercoind
+
+# Config file location
+#JUPITERCOIND_CONFIGFILE="/etc/jupitercoin/jupitercoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $JUPITERCOIND_USER)
+#JUPITERCOIND_PIDDIR="/var/run/jupitercoind"
+
+# What filename to give the pidfile
+#JUPITERCOIND_PIDFILE="${JUPITERCOIND_PIDDIR}/jupitercoind.pid"
+
+# Where to write jupitercoind data (be mindful that the blockchain is large)
+#JUPITERCOIND_DATADIR="/var/lib/jupitercoind"
+
+# User and group to own jupitercoind process
+#JUPITERCOIND_USER="jupitercoin"
+#JUPITERCOIND_GROUP="jupitercoin"
+
+# Path to jupitercoind executable
+#JUPITERCOIND_BIN="/usr/bin/jupitercoind"
+
+# Nice value to run jupitercoind under
+#JUPITERCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+JUPITERCOIND_OPTS="-disablewallet"
+

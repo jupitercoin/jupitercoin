@@ -1,0 +1,22 @@
+[Unit]
+Description=Jupitercoin's distributed currency daemon
+After=network.target
+
+[Service]
+User=jupitercoin
+Group=jupitercoin
+
+Type=forking
+PIDFile=/var/lib/jupitercoind/jupitercoind.pid
+ExecStart=/usr/bin/jupitercoind -daemon -pid=/var/lib/jupitercoind/jupitercoind.pid \
+-conf=/etc/jupitercoin/jupitercoin.conf -datadir=/var/lib/jupitercoind -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
