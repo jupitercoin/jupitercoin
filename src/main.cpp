@@ -36,6 +36,9 @@
 #include <boost/math/distributions/poisson.hpp>
 #include <boost/thread.hpp>
 
+// debugging
+#include <iostream>
+
 using namespace std;
 
 #if defined(NDEBUG)
@@ -1035,7 +1038,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, const CTransa
             dFreeCount += nSize;
         }
 
-        if (fRejectAbsurdFee && nFees > ::minRelayTxFee.GetFee(nSize) * 10000)
+        if (false/*fRejectAbsurdFee*/ && nFees > ::minRelayTxFee.GetFee(nSize) * 10000)
             return error("AcceptToMemoryPool: absurdly high fees %s, %d > %d",
                          hash.ToString(),
                          nFees, ::minRelayTxFee.GetFee(nSize) * 10000);
