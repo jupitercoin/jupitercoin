@@ -25,6 +25,9 @@
 #include <boost/filesystem.hpp>
 #include <boost/thread.hpp>
 
+// For debugging
+#include <iostream>
+
 using namespace std;
 
 /**
@@ -1943,6 +1946,8 @@ bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend,
                 // because we must be at the maximum allowed fee.
                 if (nFeeNeeded < ::minRelayTxFee.GetFee(nBytes))
                 {
+                    // debugging
+                    // cout << "nFeeNeeded: " <<  nFeeNeeded << "\nnMinRelayTxFee: " << ::minRelayTxFee.GetFee(nBytes) << "\nnBytes: " << nBytes << "\n";
                     strFailReason = _("Transaction too large for fee policy");
                     return false;
                 }
@@ -2038,6 +2043,7 @@ CAmount CWallet::GetMinimumFee(const CMutableTransaction& tx, unsigned int nTxBy
     if (nFeeNeeded < ::minRelayTxFee.GetFee(nTxBytes))
         nFeeNeeded = ::minRelayTxFee.GetFee(nTxBytes);
     // But always obey the maximum
+    // cout << "Max fee: " << maxTxFee << "\n"; // debugging
     if (nFeeNeeded > maxTxFee)
         nFeeNeeded = maxTxFee;
     return nFeeNeeded;

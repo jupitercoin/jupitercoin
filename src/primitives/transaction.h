@@ -147,8 +147,8 @@ public:
         // with default minRelayTxFee.
         // size_t nSize = GetSerializeSize(SER_DISK,0)+148u;
         // return 3*minRelayTxFee.GetFee(nSize);
-        // Jupitercoin: Dust is 1 COIN
-        return COIN;
+        // Jupitercoin: Dust is bitcoin divided by about 5
+        return 110;
     }
 
     bool IsDust(const CFeeRate &minRelayTxFee) const
